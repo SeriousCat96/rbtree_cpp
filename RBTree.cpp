@@ -459,22 +459,18 @@ void prettyPrint(node* root)
 
 int main() 
 {
-	int a, maxnum = 200, ct;
+	int a, maxnum = 50;
 	node* t;
 
-	srand(time(NULL));
-
-	for (ct = maxnum; ct; ct--) 
+	for (int i = 1; i <= maxnum; ++i) 
 	{
-		a = rand() % 999 + 1;
-
-		if ((t = findNode(a)) != NULL) 
+		if ((t = findNode(i)) != NULL) 
 		{
 			deleteNode(t);
 		}
 		else 
 		{
-			insertNode(a);
+			insertNode(i);
 		}
 	}
 
@@ -485,4 +481,37 @@ int main()
 
 	cout << "Max element is: " << max->data << endl;
 	cout << "Min element is: " << min->data << endl;
+
+	cout << endl << "Delete 50: " << endl;
+	// Удалим элемент "50"
+	t = findNode(50);
+	deleteNode(t);
+
+	// Посмотрим, что получилось
+	prettyPrint(root);
+
+
+	cout << endl << "Delete 8: " << endl;
+	// Удалим элемент "8"
+	t = findNode(8);
+	deleteNode(t);
+
+	// Посмотрим, что получилось
+	prettyPrint(root);
+
+
+	cout << endl << "Insert 51: " << endl;
+	// Добавим "51"
+	insertNode(51);
+
+	// Посмотрим, что получилось
+	prettyPrint(root);
+
+
+	cout << endl << "Insert 0: " << endl;
+	// Добавим "0"
+	insertNode(0);
+
+	// Посмотрим, что получилось
+	prettyPrint(root);
 }
